@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>e-Shop client</title>
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/bootstrap-2.3.2.min.css">
+    <link rel="stylesheet" href="styles/bootstrap-responsive-2.3.2.css">
+    <!-- endbuild -->
+</head>
+<body>
+<script type="text/x-handlebars">
+    <div>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <div class="brand">
+                        API Invoker
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" id="main">
+            <div class="row-fluid">
+                <div>
+                    <div class="span3">
+                        <div class="well sidebar-nav">
+                            <span class="nav-header">APIs</span>
+                            <ul class="nav nav-list">
+                                {{#each}}
+                                <li>{{#link-to "detail" this}}{{name}}{{/link-to}}</li>
+                                <br>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="span9">
+                        <br><br><br>
+                        {{outlet}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-handlebars" class="well" id="detail">
+    <label for="apiID" class="label">ID:</label>
+
+    <div id="apiID">{{id}}</div>
+    <label for="apiName" class="label">Name:</label>
+
+    <div id="apiName">{{name}}</div>
+    <label for="apiDomain" class="label">Domain:</label>
+
+    <div id="apiDomain">{{domain}}</div>
+    <label for="apiUrl" class="label">Url:</label>
+
+    <div id="apiUrl">{{url}}</div>
+    <label for="apiVersion" class="label">Version:</label>
+
+    <div id="apiVersion">{{version}}</div>
+    <label for="apiParameters" class="label">Parameters:</label>
+
+    <div id="apiParameters">{{parameters}}</div>
+    <hr>
+    <div>
+        <button
+        {{action "invoke" this}}>invoke</button></div>
+</script>
+
+<script src="libs/jquery-1.9.1.js"></script>
+<script src="libs/handlebars-1.0.0.js"></script>
+<script src="libs/ember-1.0.0.js"></script>
+<script src="libs/ember-data.js"></script>
+<script src="libs/local_storage_adapter.js"></script>
+
+<!-- build:js(.tmp) scripts/templates.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/detail_controller.js"></script>
+<script src="scripts/models/api_model.js"></script>
+<script src="scripts/routes/app_route.js"></script>
+<script src="scripts/routes/detail_route.js"></script>
+
+<!-- endbuild -->
+</body>
+</html>
